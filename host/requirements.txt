@@ -1,0 +1,6 @@
+chainlit
+mcp
+langgraph
+langchain
+langchain-openai
+pandas
