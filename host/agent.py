@@ -8,6 +8,10 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from mcp_interface import get_market_data_tool, fit_market_curve_tool, detect_sr_zones_tool
 import os
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # Define Tools
 @tool
 async def fetch_data(ticker: str, period: str = "1mo", interval: str = "1d"):
@@ -33,7 +37,14 @@ class AgentState(TypedDict):
 # Define Graph
 def create_graph():
     # Initialize LLM (Ensure GOOGLE_API_KEY is set in environment)
-    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0)
+    if "GOOGLE_API_KEY" not in os.environ:
+        raise ValueError("GOOGLE_API_KEY not found in environment variables")
+        
+    llm = ChatGoogleGenerativeAI(
+        model="gemini-2.0-flash",
+        temperature=0,
+        google_api_key=os.environ["GOOGLE_API_KEY"]
+    )
     llm_with_tools = llm.bind_tools(tools)
 
     def agent_node(state: AgentState):

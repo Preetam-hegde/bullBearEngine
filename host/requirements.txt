@@ -2,5 +2,6 @@ chainlit
 mcp
 langgraph
 langchain
-langchain-openai
+langchain-google-genai
 pandas
+python-dotenv
