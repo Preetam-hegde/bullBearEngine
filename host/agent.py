@@ -5,7 +5,7 @@ from langchain_core.tools import tool
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode
 from langchain_openai import ChatOpenAI
-from host.mcp_interface import get_market_data_tool, fit_market_curve_tool, detect_sr_zones_tool
+from mcp_interface import get_market_data_tool, fit_market_curve_tool, detect_sr_zones_tool
 import os
 
 # Define Tools

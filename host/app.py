@@ -1,5 +1,5 @@
 import chainlit as cl
-from host.agent import run_agent
+from agent import run_agent
 from langchain_core.messages import HumanMessage, AIMessage
 
 @cl.on_chat_start
