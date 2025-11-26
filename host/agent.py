@@ -4,7 +4,7 @@ from langchain_core.messages import BaseMessage, HumanMessage, AIMessage
 from langchain_core.tools import tool
 from langgraph.graph import StateGraph, END
 from langgraph.prebuilt import ToolNode
-from langchain_openai import ChatOpenAI
+from langchain_google_genai import ChatGoogleGenerativeAI
 from mcp_interface import get_market_data_tool, fit_market_curve_tool, detect_sr_zones_tool
 import os
 
@@ -32,9 +32,8 @@ class AgentState(TypedDict):
 
 # Define Graph
 def create_graph():
-    # Initialize LLM (Ensure OPENAI_API_KEY is set in environment)
-    # Using a placeholder model or expecting env var
-    llm = ChatOpenAI(model="gpt-4o", temperature=0) 
+    # Initialize LLM (Ensure GOOGLE_API_KEY is set in environment)
+    llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash", temperature=0)
     llm_with_tools = llm.bind_tools(tools)
 
     def agent_node(state: AgentState):
