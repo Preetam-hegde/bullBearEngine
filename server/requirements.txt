@@ -3,3 +3,6 @@ pandas
 scipy
 scikit-learn
 yfinance
+plotly
+xgboost
+lightgbm

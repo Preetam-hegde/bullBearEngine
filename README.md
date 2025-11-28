@@ -41,27 +41,20 @@ A Human-in-the-Loop financial analysis system using MCP (Model Context Protocol)
 
 ## 📁 Server (`server/`)
 
-### **Created Files**
+### **Tools (`server/tools/`)**
 
-#### **1. `tools/market_data.py`**
+- **`market_data.py`**: Fetches historical market data using **yfinance**.
+- **`company_info.py`**: Retrieves company profile, sector, industry, and key financial metrics.
+- **`technical_analysis.py`**: Calculates technical indicators (RSI, MACD, Bollinger Bands, etc.) and generates AI-driven market analysis.
+- **`prediction.py`**: Uses **Random Forest** (scikit-learn) to predict future price movements based on technical indicators and lag features.
+- **`performance_analysis.py`**: Analyzes historical performance, calculating metrics like Sharpe Ratio, Volatility, and Max Drawdown.
+- **`visualize.py`**: Generates interactive **Plotly** charts for market data and indicators.
+- **`create_chart.py`**: Helper module for creating advanced candlestick and indicator charts.
+- **`perfomance_metric.py`**: Helper module for calculating and visualizing performance metrics.
 
-- Fetches market data using **yfinance**.
-- Provides clean wrappers for price history, indicators, and intraday data.
+### **Main Entry Point**
 
-#### **2. `tools/market_curve.py`**
-
-- Analyzes trends and curves using **SciPy**.
-- Performs smoothing, trend detection, and curve-fit–based insights.
-
-#### **3. `tools/sr_zones.py`**
-
-- Detects **Support / Resistance zones** using **scikit-learn** clustering.
-- Generates SR bands for decision-making.
-
-#### **4. `main.py`**
-
-- Entry point for the MCP Server.
-- Uses **fastmcp** to expose analysis tools as callable MCP functions.
+- **`main.py`**: The MCP Server entry point using **fastmcp**. Exposes the tools as callable functions for the Host.
 
 ---
 
@@ -103,6 +96,9 @@ A Human-in-the-Loop financial analysis system using MCP (Model Context Protocol)
   - LangGraph
   - Chainlit
   - yfinance
+  - plotly
+  - xgboost
+  - lightgbm
   - scipy
   - scikit-learn
   - python-dotenv
